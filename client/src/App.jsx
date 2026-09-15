@@ -11,17 +11,22 @@ import Dashboard from './pages/owner/Dashboard'
 import AddCar from './pages/owner/AddCar'
 import ManageCar from './pages/owner/ManageCar'
 import ManageBooking from './pages/owner/ManageBooking'
+import Login from './components/Login'
 
 
 
 const App = () => {
   //to show this navbar on all pages we mounted this
-  const[setLogin, setShowLogin] = useState(false)
+  const[showLogin, setShowLogin] = useState(false)
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
 
 
   return (
     <>
+    {/* it will display login com whan showLogin is true */}
+    {showLogin && <Login setShowLogin={setShowLogin}/>}
+
+
       {!isOwnerPath && <Navbar setShowLogin={setShowLogin}/>}
 
 
