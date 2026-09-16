@@ -19,6 +19,7 @@ const App = () => {
   //to show this navbar on all pages we mounted this
   const[showLogin, setShowLogin] = useState(false)
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
+  console.log("this is state",showLogin)
 
 
   return (
