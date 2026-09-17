@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import connectDB from "./configs/db.js";
+import userRouter from "./routes/userRoutes.js";
 
 
 
@@ -18,6 +19,11 @@ app.use(express.json())
 
 //route
 app.get("/",(req,res)=>res.send("Server is running"))
+
+//user Router
+app.use('/api/user',userRouter)
+
+
 
 //port
 const PORT = process.env.PORT || 3000
