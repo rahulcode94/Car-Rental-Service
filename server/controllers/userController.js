@@ -16,7 +16,7 @@ export const registerUser = async (req, res) => {
         const { name, email, password } = req.body
 
         if (!name || !email || !password || password.length < 8) {
-            return res.json({ success: false, massage: 'fill all the fields' })
+            return res.json({ success: false, message: 'fill all the fields' })
 
         }
 
@@ -34,8 +34,8 @@ export const registerUser = async (req, res) => {
         res.json({ success: true , token:token})
 
     } catch (error) {
-        console.log(error.massage);
-        res.json({ success: false, massage: error.massage })
+        console.log(error.message);
+        res.json({ success: false, message: error.message })
 
     }
 
@@ -50,21 +50,21 @@ export const loginUser = async (req, res) => {
         //it will find user in database
         const user = await User.findOne({ email })
         if (!user) {
-            return res.json({ success: false, massage: 'User not found' })
+            return res.json({ success: false, message: 'User not found' })
         }
 
         //it will match the password of that user
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
-            return res.json({ success: false, massage: 'Invalid Credentials' })
+            return res.json({ success: false, message: 'Invalid Credentials' })
         }
 
         const token = generateToken(user._id.toString())
         res.json({ success: true,  token })
 
     } catch (error) {
-        console.log(error.massage);
-        res.json({ success: false, massage: error.massage })
+        console.log(error.message);
+        res.json({ success: false, message: error.message })
     }
 
 }
@@ -78,8 +78,8 @@ export const getUserData = async (req,res) => {
         const {user} = req;
         res.json({success:true, user})
     } catch (error) {
-         console.log(error.massage);
-        res.json({ success: false, massage: error.massage })
+         console.log(error.message);
+        res.json({ success: false, message: error.message })
     }
     
 }
