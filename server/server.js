@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./configs/db.js";
 import userRouter from "./routes/userRoutes.js";
 import ownerRouter from "./routes/ownerRoutes.js";
+import bookingRouter from "./routes/bookingRoutes.js";
 
 
 
@@ -24,6 +25,7 @@ app.get("/",(req,res)=>res.send("Server is running"))
 //user Router
 app.use('/api/user',userRouter)
 app.use('/api/owner',ownerRouter)
+app.use('/api/bookings',bookingRouter)
 
 
 
