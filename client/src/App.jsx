@@ -13,22 +13,24 @@ import ManageCar from './pages/owner/ManageCar'
 import ManageBooking from './pages/owner/ManageBooking'
 import Login from './components/Login'
 
+import { useAppContext } from './context/AppContext'
+
 
 
 const App = () => {
   //to show this navbar on all pages we mounted this
-  const[showLogin, setShowLogin] = useState(false)
+  const {showLogin} = useAppContext()
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
-  console.log("this is state",showLogin)
+  
 
 
   return (
     <>
     {/* it will display login com whan showLogin is true */}
-    {showLogin && <Login setShowLogin={setShowLogin}/>}
+    {showLogin && <Login/>}
 
 
-      {!isOwnerPath && <Navbar setShowLogin={setShowLogin}/>}
+      {!isOwnerPath && <Navbar/>}
 
 
       <Routes>
